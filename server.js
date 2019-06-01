@@ -1,10 +1,11 @@
-const express = require('express');
+﻿const express = require('express');
 const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const RestaurantSchema = require('./models/restaurant');
 const bodyParser = require('body-parser');
 const nodemailer = require("nodemailer");
+const port=process.env.PORT || 5000
 
 app.use( (req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -126,4 +127,6 @@ app.post('/newRestaurant', (req, res)=> {
 
 })
 
-app.listen(5000, () => console.log(`Listening on port 5000`));
+app.listen(port,() => {
+	console.log(`Server running at port `+port);
+});
